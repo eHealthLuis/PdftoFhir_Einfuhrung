@@ -1,0 +1,246 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2025-11-26T15:35:02.454+01:00",
+  "entry": [ {
+    "fullUrl": "urn:uuid:bc99f955-6420-420f-aa61-281ad740c800",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "patient2025719",
+      "identifier": [ {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ]
+        },
+        "system": "urn:oid:1.2.40.0.10.99.1",
+        "value": "2025719"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SB",
+            "display": "Social Beneficiary Identifier"
+          } ]
+        },
+        "system": "urn:oid:1.2.40.0.10.1.4.3.1",
+        "value": "1234210902"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Huber",
+        "given": [ "Calare" ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "0123456",
+        "use": "home"
+      } ],
+      "gender": "female",
+      "birthDate": "1980-01-01"
+    }
+  }, {
+    "fullUrl": "urn:uuid:49299881-2dee-46e2-ade8-1817fa56b31d",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "org-praxis",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-organization" ]
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ]
+      } ],
+      "name": "Kein Name"
+    }
+  }, {
+    "fullUrl": "urn:uuid:597066ad-6ae1-4387-9dba-66d5576e497b",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "condition-1",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active",
+          "display": "Active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed",
+          "display": "Confirmed"
+        } ]
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.at/fhir/HL7Austria/r4/CodeSystem/icd-10-at",
+          "display": "Diabetes Typ 1"
+        } ],
+        "text": "Diabetes Typ 1"
+      },
+      "subject": {
+        "reference": "Patient/patient2025719"
+      },
+      "recordedDate": "2025-11-26T15:35:02+01:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:6d79bdbd-c007-4799-be6a-b6aed2f3fad5",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "condition-1",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active",
+          "display": "Active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed",
+          "display": "Confirmed"
+        } ]
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.at/fhir/HL7Austria/r4/CodeSystem/icd-10-at"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/patient2025719"
+      },
+      "recordedDate": "2025-11-26T15:35:02+01:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:df098ad7-4ee3-47d8-97bc-fb852d131fd3",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "condition-1",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active",
+          "display": "Active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed",
+          "display": "Confirmed"
+        } ]
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.at/fhir/HL7Austria/r4/CodeSystem/icd-10-at"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/patient2025719"
+      },
+      "recordedDate": "2025-11-26T15:35:02+01:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:73b3ce2f-acfe-403c-a8f0-f50f6a29d77d",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "condition-1",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active",
+          "display": "Active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed",
+          "display": "Confirmed"
+        } ]
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://hl7.at/fhir/HL7Austria/r4/CodeSystem/icd-10-at",
+          "display": "Gicht / Hyperurikämie"
+        } ],
+        "text": "Gicht / Hyperurikämie"
+      },
+      "subject": {
+        "reference": "Patient/patient2025719"
+      },
+      "recordedDate": "2025-11-26T15:35:02+01:00"
+    }
+  }, {
+    "fullUrl": "urn:uuid:75d5714e-f7c5-4fa4-bc6f-29784c96b26f",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-observation" ]
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "4548-4",
+          "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+        } ],
+        "text": "HbA1c"
+      },
+      "subject": {
+        "reference": "Patient/patient2025719"
+      },
+      "effectiveDateTime": "2025-10-29T00:00:00+01:00",
+      "valueQuantity": {
+        "value": 0.0,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    }
+  }, {
+    "fullUrl": "urn:uuid:10760843-43cc-42af-83ec-e17e1e157fac",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "meta": {
+        "profile": [ "http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-diagnosticreport" ]
+      },
+      "status": "final",
+      "code": {
+        "text": "Therapiebericht - Ernährungsberatung"
+      },
+      "subject": {
+        "reference": "Patient/patient2025719"
+      },
+      "effectiveDateTime": "2025-10-29T00:00:00+01:00",
+      "issued": "2025-11-26T15:35:02.457+01:00",
+      "conclusion": "Therapiebericht vom 2025-10-29 - Adipositas Grad II mit Begleitdiagnosen. Gewichtsverlauf zeigt kontinuierliche Zunahme. Ernährungsumstellung und Bewegungstherapie empfohlen."
+    }
+  } ]
+}
