@@ -1,3 +1,8 @@
+notepad .gitignore
+```
+
+Füge den Inhalt ein:
+```
 # NetBeans
 nbproject/private/
 build/
@@ -41,11 +46,8 @@ hs_err_pid*
 local.properties
 
 # PDF and JSON outputs
-*.pdf
+docs/*.pdf
 *.json
-
-# Tesseract
-tessdata/
 
 # Logs
 *.log
