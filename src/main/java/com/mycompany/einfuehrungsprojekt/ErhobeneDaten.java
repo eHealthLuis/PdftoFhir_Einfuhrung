@@ -5,15 +5,18 @@
 package com.mycompany.einfuehrungsprojekt;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Firma
  */
 public class ErhobeneDaten {
-    String gewichtsVerlauf;
+
+    Map<String, Double> gewichtsVerlauf;
     String symptome;
-    ArrayList<String> hauptDiagnosen= new ArrayList<>();
+    ArrayList<String> hauptDiagnosen = new ArrayList<>();
     String eigeneHauptDiagnose;
     String zusammenfassungHauptDiagnose;
     String nebenDiagnose;
@@ -37,10 +40,44 @@ public class ErhobeneDaten {
     public ErhobeneDaten() {
     }
 
-    public void setGewichtsVerlauf(String gewichtsVerlauf) {
-        this.gewichtsVerlauf = gewichtsVerlauf;
+    public void setGewichtsVerlauf(String input) {
+    Map<String, Double> result = new HashMap<>();
+    
+    if (input == null || input.trim().isEmpty()) {
+        gewichtsVerlauf=result;
     }
-
+    
+    // Split by dash to get individual key-value pairs
+    String[] pairs = input.split(" - ");
+    
+    for (String pair : pairs) {
+        // Split each pair by colon
+        String[] keyValue = pair.split(":", 2);
+        
+        if (keyValue.length == 2) {
+            String key = keyValue[0].trim();
+            String valueStr = keyValue[1].trim();
+            
+            valueStr = valueStr.replaceAll("(?i)kg$", "").trim();
+            
+            try {
+                Double value = Double.parseDouble(valueStr);
+                result.put(key, value);
+            } catch (NumberFormatException e) {
+                // Skip entries that can't be parsed as double
+                // Or you could log this, or put null, depending on your needs
+                System.err.println("Could not parse value as double for key '" + key + "': " + valueStr);
+            }
+        }
+    }
+    gewichtsVerlauf= result;
+    
+        for (Map.Entry<String, Double> entry : gewichtsVerlauf.entrySet()) {
+            System.out.println(entry.getValue());
+            
+        }
+    
+}
     public void setSymptome(String symptome) {
         this.symptome = symptome;
     }
@@ -125,7 +162,7 @@ public class ErhobeneDaten {
         this.inBehandlung = inBehandlung;
     }
 
-    public String getGewichtsVerlauf() {
+    public Map<String, Double> getGewichtsVerlauf() {
         return gewichtsVerlauf;
     }
 
@@ -136,8 +173,6 @@ public class ErhobeneDaten {
     public ArrayList<String> getHauptDiagnosen() {
         return hauptDiagnosen;
     }
-
-    
 
     public String getEigeneHauptDiagnose() {
         return eigeneHauptDiagnose;
@@ -214,8 +249,5 @@ public class ErhobeneDaten {
     public String getInBehandlung() {
         return inBehandlung;
     }
-    
-    
-    
-    
+
 }

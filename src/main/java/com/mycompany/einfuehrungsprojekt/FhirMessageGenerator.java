@@ -10,6 +10,7 @@ import org.hl7.fhir.r4.model.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 public class FhirMessageGenerator {
@@ -64,6 +65,11 @@ public class FhirMessageGenerator {
          */
         // Mehr Diagnosen
         // 7. Observations - Gewichtsverlauf    JAHR:GEWICHT - JAHR:GEWICHT - JAHR:GEWICHT
+        
+        for (Map.Entry<String, Double> entry : ed.getGewichtsVerlauf().entrySet()) {
+            createWeightObservation(patient, entry.getKey(), entry.getValue());
+        }
+        
         // 8. HbA1c-Wert
         Observation hba1c = createHbA1cObservation(patient, pat.getDocDate(), ed.getHbA1c());
         bundle.addEntry()
@@ -74,7 +80,7 @@ public class FhirMessageGenerator {
         // 10. DiagnosticReport für den gesamten Therapiebericht
         DiagnosticReport report = createDiagnosticReport(
                 patient,
-                organization,
+                ed,
                 pat.getDocDate()
         );
         bundle.addEntry()
@@ -211,6 +217,8 @@ public class FhirMessageGenerator {
     private Observation createWeightObservation(Patient patient, String date, double weight) {
         Observation obs = new Observation();
         obs.setId(IdType.newRandomUuid());
+        
+        date= date + "-01-01";
 
         // Österreichisches Observation-Profil
         Meta meta = new Meta();
@@ -296,52 +304,8 @@ public class FhirMessageGenerator {
         return obs;
     }
 
-    private Observation createBmiObservation(Patient patient, String date, double bmiValue) {
-        Observation obs = new Observation();
-        obs.setId(IdType.newRandomUuid());
-
-        // Österreichisches Observation-Profil
-        Meta meta = new Meta();
-        meta.addProfile("http://hl7.at/fhir/HL7Austria/r4/StructureDefinition/at-core-observation");
-        obs.setMeta(meta);
-
-        obs.setStatus(Observation.ObservationStatus.FINAL);
-        obs.setSubject(new Reference("Patient/" + patient.getId()));
-
-        // LOINC Code für BMI
-        CodeableConcept code = new CodeableConcept();
-        code.addCoding(new Coding()
-                .setSystem("http://loinc.org")
-                .setCode("39156-5")
-                .setDisplay("Body mass index (BMI) [Ratio]"));
-        code.setText("BMI");
-        obs.setCode(code);
-
-        // Kategorie
-        obs.addCategory(new CodeableConcept()
-                .addCoding(new Coding()
-                        .setSystem("http://terminology.hl7.org/CodeSystem/observation-category")
-                        .setCode("vital-signs")
-                        .setDisplay("Vital Signs")));
-
-        try {
-            obs.setEffective(new DateTimeType(sdf.parse(date)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Quantity quantity = new Quantity();
-        quantity.setValue(bmiValue);
-        quantity.setUnit("kg/m2");
-        quantity.setSystem("http://unitsofmeasure.org");
-        quantity.setCode("kg/m2");
-        obs.setValue(quantity);
-
-        return obs;
-    }
-
     private DiagnosticReport createDiagnosticReport(Patient patient,
-            Organization org,
+            ErhobeneDaten ed,
             String date) {
         DiagnosticReport report = new DiagnosticReport();
         report.setId(IdType.newRandomUuid());
@@ -367,9 +331,7 @@ public class FhirMessageGenerator {
 
         // Conclusion Text
         report.setConclusion("Therapiebericht vom " + date
-                + " - Adipositas Grad II mit Begleitdiagnosen. "
-                + "Gewichtsverlauf zeigt kontinuierliche Zunahme. "
-                + "Ernährungsumstellung und Bewegungstherapie empfohlen.");
+                + " " + ed.zusammenfassungHauptDiagnose);
 
         return report;
     }

@@ -441,6 +441,7 @@ public class Einfuehrungsprojekt extends JFrame{
         daten.addHauptDiagnosen(extractValue(text, "Nebendiagnose\\s*:\\s*(.+?)\\n"));
         daten.setZuweisung(extractValue(text, "Zuweisung\\s*:\\s*(.+?)\\n"));
         daten.setSerumProteinStatus(extractValue(text, "Serum-Protein-Status\\s*:\\s*(.+?)\\n"));
+        daten.setZusammenfassungHauptDiagnose(extractValue(text,"Zusammenfassung Hauptdiagnose\\s*:\\s*(.+?)\\n" ));
 
         String HbA1cString = extractValue(text, "HbA1c-Verlauf\\s*:\\s*(.+?)\\n");
         if (HbA1cString != null && !HbA1cString.isEmpty()) {
